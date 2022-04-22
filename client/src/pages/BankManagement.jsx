@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React from 'react';
 import {Box, Button} from "@mui/material";
 import BankCard from "../component/BankCard";
 import BankForm from "../component/BankForm";
@@ -19,7 +19,7 @@ const BankManagement = ({bankList}) => {
         {bankList.map((bank, i) => <BankCard key={i} bank={bank}/>)}
       </Box>
 
-      <BankForm open={open} handleClose={handleClose} />
+      <BankForm open={open} handleClose={handleClose}/>
     </Box>
   );
 };

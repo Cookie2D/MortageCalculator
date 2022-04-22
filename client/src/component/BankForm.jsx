@@ -1,4 +1,4 @@
-import React, {useState, useContext, useEffect} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import {Box, Button, Modal, TextField, Typography} from "@mui/material";
 import {BankContext} from "./../context/BankContext";
 
@@ -31,6 +31,7 @@ const BankForm = ({open, handleClose, bank = null}) => {
       setMinimumDownPayment(bank.minimumDownPayment);
       setLoanTerm(bank.loanTerm);
     }
+    // eslint-disable-next-line
   }, [])
 
   function handleSubmit(e) {
@@ -63,7 +64,7 @@ const BankForm = ({open, handleClose, bank = null}) => {
         <Box
           component="form"
           sx={{
-            '& .MuiTextField-root': { m: 1, width: '25ch' },
+            '& .MuiTextField-root': {m: 1, width: '25ch'},
             textAlign: "center",
           }}
           onSubmit={handleSubmit}

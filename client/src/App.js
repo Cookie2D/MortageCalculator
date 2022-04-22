@@ -6,28 +6,8 @@ import Header from "./component/Header";
 import {Container} from "@mui/material";
 import {BankContext} from "./context/BankContext";
 
-const gbanks = [
-  {
-    id: 1,
-    name: "Credo Bank",
-    interestRate: 5,
-    creditMaximum: 200000,
-    minimumDownPayment: 15,
-    loanTerm: 6
-  },
-  {
-    id: 2,
-    name: "Privat 24",
-    interestRate: 25,
-    creditMaximum: 100000,
-    minimumDownPayment: 20,
-    loanTerm: 12
-  }
-]
-
 function App() {
   const [bankList, setBankList] = useState(JSON.parse(localStorage.getItem("bankList")))
-  // localStorage.setItem("bankList", JSON.stringify(gbanks))
   useEffect(() => {
     localStorage.setItem("bankList", JSON.stringify(bankList))
   }, [bankList])
@@ -54,7 +34,7 @@ function App() {
       <Container className="App">
         <Header/>
         <Routes>
-          <Route path="/" element={<BankManagement bankList={bankList} />}/>
+          <Route path="/" element={<BankManagement bankList={bankList}/>}/>
           <Route path="/calculator" element={<MortgageCalculator bankList={bankList}/>}/>
         </Routes>
       </Container>
