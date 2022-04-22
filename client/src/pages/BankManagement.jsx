@@ -1,8 +1,10 @@
 import React from 'react';
 import {Box, Button} from "@mui/material";
+import BankCard from "../component/BankCard";
 
 const bankList = [
   {
+    id: 1,
     name: "Credo Bank",
     interestRate: 5,
     creditMaximum: 200000,
@@ -10,6 +12,7 @@ const bankList = [
     loanTerm: 6
   },
   {
+    id: 2,
     name: "Privat 24",
     interestRate: 25,
     creditMaximum: 100000,
@@ -26,8 +29,8 @@ const BankManagement = () => {
           Create Bank
         </Button>
       </Box>
-      <Box>
-
+      <Box sx={{display: 'flex', justifyContent: "space-around"}}>
+        {bankList.map((bank, i) => <BankCard key={i} bank={bank}/>)}
       </Box>
     </Box>
   );
