@@ -1,7 +1,10 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import {Button, Card, CardActions, CardContent, Typography} from "@mui/material";
+import {BankContext} from "../context/BankContext";
 
 const BankCard = ({bank}) => {
+  const {removeBank} = useContext(BankContext);
+
   return (
     <Card sx={{ maxWidth: 450, minWidth: 350 }}>
       <CardContent>
@@ -23,7 +26,9 @@ const BankCard = ({bank}) => {
       </CardContent>
       <CardActions>
         <Button size="small" variant="contained">Edit</Button>
-        <Button size="small" variant="outlined" color="error">Delete</Button>
+        <Button size="small" variant="outlined" color="error" onClick={() => {removeBank(bank.id)}}>
+          Delete
+        </Button>
       </CardActions>
     </Card>
   );

@@ -1,37 +1,25 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import {Box, Button} from "@mui/material";
 import BankCard from "../component/BankCard";
+import BankForm from "../component/BankForm";
 
-const bankList = [
-  {
-    id: 1,
-    name: "Credo Bank",
-    interestRate: 5,
-    creditMaximum: 200000,
-    minimumDownPayment: 15,
-    loanTerm: 6
-  },
-  {
-    id: 2,
-    name: "Privat 24",
-    interestRate: 25,
-    creditMaximum: 100000,
-    minimumDownPayment: 20,
-    loanTerm: 12
-  }
-]
+const BankManagement = ({bankList}) => {
+  const [open, setOpen] = React.useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
 
-const BankManagement = () => {
   return (
     <Box>
       <Box sx={{mt: 2, display: "flex"}}>
-        <Button variant="outlined" component="div" sx={{margin: "0 auto"}}>
+        <Button variant="outlined" component="div" sx={{margin: "0 auto"}} onClick={handleOpen}>
           Create Bank
         </Button>
       </Box>
       <Box sx={{display: 'flex', justifyContent: "space-around"}}>
         {bankList.map((bank, i) => <BankCard key={i} bank={bank}/>)}
       </Box>
+
+      <BankForm open={open} handleClose={handleClose} />
     </Box>
   );
 };
