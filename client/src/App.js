@@ -55,7 +55,7 @@ function App() {
         <Header/>
         <Routes>
           <Route path="/" element={<BankManagement bankList={bankList} />}/>
-          <Route path="/calculator" element={<MortgageCalculator/>}/>
+          <Route path="/calculator" element={<MortgageCalculator bankList={bankList}/>}/>
         </Routes>
       </Container>
     </BankContext.Provider>
