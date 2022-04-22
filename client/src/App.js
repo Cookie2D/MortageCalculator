@@ -1,4 +1,4 @@
-import React, {createContext, useEffect, useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {Route, Routes} from "react-router-dom";
 import BankManagement from "./pages/BankManagement";
 import MortgageCalculator from "./pages/MortgageCalculator";
@@ -42,9 +42,14 @@ function App() {
     setBankList([...bankList, bank])
   }
 
+  const updateBank = (bank) => {
+    const temp = bankList.map(e => e.id === bank.id ? bank : e)
+    setBankList(temp);
+  }
+
   return (
     <BankContext.Provider value={{
-      removeBank, createBank
+      removeBank, createBank, updateBank
     }}>
       <Container className="App">
         <Header/>

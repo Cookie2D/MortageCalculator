@@ -15,7 +15,7 @@ const BankManagement = ({bankList}) => {
           Create Bank
         </Button>
       </Box>
-      <Box sx={{display: 'flex', justifyContent: "space-around"}}>
+      <Box sx={{display: 'flex', justifyContent: "space-around", flexWrap: "wrap"}}>
         {bankList.map((bank, i) => <BankCard key={i} bank={bank}/>)}
       </Box>
 

@@ -1,4 +1,4 @@
-import React, {useState, useContext} from 'react';
+import React, {useState, useContext, useEffect} from 'react';
 import {Box, Button, Modal, TextField, Typography} from "@mui/material";
 import {BankContext} from "./../context/BankContext";
 
@@ -13,19 +13,29 @@ const style = {
   p: 4,
 };
 
-const BankForm = ({open, handleClose}) => {
+const BankForm = ({open, handleClose, bank = null}) => {
+  const [id, setId] = useState(Date.now());
   const [name, setName] = useState('');
   const [interestRate, setInterestRate] = useState('');
   const [creditMaximum, setCreditMaximum] = useState('');
   const [minimumDownPayment, setMinimumDownPayment] = useState('');
   const [loanTerm, setLoanTerm] = useState('');
-  const {createBank} = useContext(BankContext);
+  const {createBank, updateBank} = useContext(BankContext);
 
+  useEffect(() => {
+    if (bank) {
+      setId(bank.id);
+      setName(bank.name);
+      setInterestRate(bank.interestRate);
+      setCreditMaximum(bank.creditMaximum);
+      setMinimumDownPayment(bank.minimumDownPayment);
+      setLoanTerm(bank.loanTerm);
+    }
+  }, [])
 
   function handleSubmit(e) {
     e.preventDefault();
-    const id = Date.now();
-    const bank = {
+    const newBank = {
       id,
       name,
       interestRate,
@@ -34,7 +44,11 @@ const BankForm = ({open, handleClose}) => {
       loanTerm
     }
 
-    createBank(bank);
+    if (bank) {
+      updateBank(newBank)
+    } else {
+      createBank(newBank);
+    }
     handleClose();
   }
 
