@@ -7,7 +7,7 @@ import {Container} from "@mui/material";
 import {BankContext} from "./context/BankContext";
 
 function App() {
-  const [bankList, setBankList] = useState(JSON.parse(localStorage.getItem("bankList")))
+  const [bankList, setBankList] = useState(JSON.parse(localStorage.getItem("bankList")) || [] )
   useEffect(() => {
     localStorage.setItem("bankList", JSON.stringify(bankList))
   }, [bankList])
